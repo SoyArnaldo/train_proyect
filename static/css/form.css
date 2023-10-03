@@ -1,0 +1,159 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Sora', sans-serif;
+	list-style: none;
+}
+
+:root {
+	--text-color: #fff;
+	--bg-color: #111013;
+	--main-color: #0939AF;
+	--other-color: #1c201c;
+
+	--big-font: 4.5rem;
+	--h2-font:2.6rem;
+	--p-font: 1.1rem;
+}
+
+
+body {
+	background: var(--bg-color);
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+}
+
+.container-form {
+	position: relative;
+	max-width: 700px;
+	width: 100%;
+	padding: 25px;
+	background: var(--main-color);
+	border-radius: 8px;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.form .input-box {
+	width: 100%;
+	margin-top: 20px;
+}
+
+.input-box input:focus{
+	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.form button {
+	height: 55px;
+	width: 100%;
+	background-color: rgba(16, 47, 124, 0.735);
+	transition: all 0.2s ease;
+	color: var(--text-color);
+	font-size: 1rem;
+	border: none;
+	margin-top: 30px;
+	border-radius: 6px;
+	font-weight: 400;
+	cursor: pointer;
+}
+
+.form button:hover {
+	background-color: rgba(6, 27, 124, 0.735);
+}
+.input-box label{
+	color: var(--bg-color);
+}
+
+.form :where(.input-box input, .select-box) {
+	position: relative;
+	height: 50px;
+	width: 100%;
+	outline: none;
+	font-size: 1rem;
+	color: #707070;
+	margin-top: 8px;
+	border-radius: 6px;
+	border: 1px solid #ddd;
+	padding: 0 15px;
+}
+.objetivo :where(input, .select-box) {
+	margin-top: 20px;
+}
+
+.objetivo {
+	background-color: var(--text-color);
+	text-align: center;
+}
+.select-box select {
+	height: 100%;
+	width: 100%;
+	outline: none;
+	border: none;
+	color: #707070;
+	font-size: 1rem;
+}
+
+#entrenar-nivel option{
+	display: flex;
+	flex-wrap: wrap;
+}
+.form .column {
+	display: flex;
+	column-gap: 15px;
+}
+
+.form .gender-box {
+	margin-top: 20px;
+}
+
+.gender-box h3 {
+	font-size: 1rem;
+	font-weight: 400;
+	margin-bottom: 8px;
+	color: var(--bg-color);
+}
+
+.form .gender-option{
+	display: flex;
+	column-gap: 15px;
+}
+
+.form :where(.gender-option, .gender){
+	display: flex;
+	align-items: center;
+	column-gap: 50px;
+	flex-wrap: wrap;
+}
+
+.form .gender {
+	column-gap: 5px;
+	cursor: pointer;
+}
+
+.gender input {
+	accent-color:  rgba(16, 47, 124, 0.735);
+}
+
+.form :where(.gender input, .gender label) {
+	cursor: pointer;
+}
+
+@media (max-width: 992px) {
+
+	
+
+}
+
+@media (max-width: 768px) {
+	.form .column {
+		flex-wrap: wrap;
+	}
+
+	.form :where(.gender-option, .gender){
+		row-gap: 15px;
+	}
+
+}
