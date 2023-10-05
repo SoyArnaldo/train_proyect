@@ -22,4 +22,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.core.urls')), # Incluimos las urls de la app core
+    path('', include('apps.usuario.urls')) #se incluyen las urls de la app usuario
 ] 

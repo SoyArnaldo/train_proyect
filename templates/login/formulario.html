@@ -1,119 +1,44 @@
+{% extends "base.html" %}
 
-{% load static %}
+{% block title %} Formulario de Inscripción {% endblock %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Formulario Pre-Inscripción</title>
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600&display=swap" rel="stylesheet">
-    <!-- CSS -->
-    <link rel="stylesheet" href="{% static 'css/form.css' %}">
-</head>
-<body>
-	<section class="container-form">
-		<form action="" id="form" class="form">
-			<div class="input-box">
-				<label>Nombre</label>
-				<input type="text" name="first-name" id="first-name" placeholder="Nombre" required>
-			</div>
-			<div class="input-box">
-				<label>Apellido</label>
-				<input type="text" name="last-name" id="last-name" placeholder="Apellido" required>
-			</div>
-			<div class="input-box objetivo">
-					<label>Nivel de actividad diaria</label>
-					<div class="column">
-						<div class="select-box">
-							<select name="entrenar-nivel" id="entrenar-nivel">
-								<option value="0">
-									Ningún ejercicio (no realiza prácticamente nada de ejercicio)
-								</option>
-								<option value="1">
-									Poco activo
-								</option>
-								<option value="2">
-									Moderadamente activo
-								</option>
-								<option value="3">
-									Muy activo
-								</option>
-								<option value="4">
-									Extremadamente activo
-								</option>
-							</select>
-						</div>
-					</div>
-			</div>	
-			<div class="input-box  objetivo">
-				<label>En dónde vas a entrenar</label>
-				<div class="column">
-					<div class="select-box">
-						<select name="entrenar-lugar" id="entrenar-lugar">
-							<option value="en-casa">En casa</option>
-							<option value="en-gimnasio">En gimnasio</option>
-						</select>
-					</div>
-				</div>
-			</div>
-			<div class="input-box">
-				<label>Nacimiento</label>
-				<input type="date" name="nacimiento" id="nacimiento" required>
-			</div>
-			<div class="input-box">
-				<label>Altura</label>
-				<input type="number" name="altura" id="altura" placeholder="Altura" required>
-			</div>
-			<div class="input-box">
-				<label>Peso</label>
-				<input type="number" name="peso" id="peso" placeholder="Peso" required>
-			</div>
-			<div class="gender-box">
-				<h3>Sexo</h3>
-				<div class="gender-option">
-					<div class="gender">
-						<input type="radio" name="gender" id="check-masculino" checked>
-						<label for="check-masculino" value="masculino">Masculino</label>
-					</div>
-					<div class="gender">
-						<input type="radio" name="gender" id="check-femenino">
-						<label for="check-femenino" value="femenino">Femenino</label>
-					</div>
-					<div class="gender">
-						<input type="radio" name="gender" id="check-otro">
-						<label for="check-otro" value="otro">Otro</label>
-					</div>
-				</div>
-			</div>
-			<div class="input-box objetivo">
-				<label>Objetivo</label>
-				<div class="column">
-					<div class="select-box">
-						<select name="objetivo" id="objetivo">
-							<option value="ganar-masa-muscular">Ganar masa muscular</option>
-							<option value="perder-grasa">Perder grasa</option>
-							<option value="ambas">Ambas</option>
-							<option value="solo-mejorar-mi-salud">Sólo mejorar mi salud</option>
-						</select>
-					</div>
-				</div>
-			</div>
-			<div class="input-box">
-				<label>Email</label>
-				<input type="text" name="email" id="email" placeholder="Email" required>
-			</div>
-			<div class="input-box">
-				<label>Contraseña</label>
-				<input type="password" name="password-user" id="password-user" required>
-			</div>
-			<button type="submit">Enviar</button>
-		</form>
-	</section>
-</body>
-</html>
+{% block content %}
+{% block header %}
 
-
-
-
-
+{% endblock %}
+    <section class="container-form mt-4">
+        <form method="POST" enctype="multipart/form-data" id="form" class="form">
+            {% csrf_token %}
+            <div class="input-box mt-3">
+                <label>Nombre</label>
+                <input type="text" name="first_name" id="first_name" placeholder="Escribe tu nombre" required>
+            </div>
+            <div class="input-box">
+                <label>Apellido</label>
+                <input type="text" name="last_name" id="last_name" placeholder="Escribe tu apellido" required>
+            </div>
+            <div class="input-box">
+                <label>Nombre de Usuario</label>
+                <input type="text" name="username" id="username" placeholder="Escribe tu nombre de usuario" required>
+            </div>
+            <!-- Otros campos del formulario -->
+            <div class="input-box">
+                <label>Email</label>
+                <input type="text" name="email" id="email" placeholder="Correo electrónico" required>
+            </div>
+            <div class="input-box">
+                <label>Peso</label>
+                <input type="number" name="peso" id="peso" placeholder="Escribe tu peso en numeros" required>
+            </div>
+            <div class="input-box">
+                <label>Contraseña</label>
+                <input type="password" name="password1" id="password1" placeholder="Escribe una contraseña" required>
+            </div>
+            <div class="input-box">
+                <label>Confirma la contraseña</label>
+                <input type="password" name="password2" id="password2" required>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+{% endblock %}
