@@ -13,8 +13,8 @@ from .models import Item
 #     return render(request,'index.html', {'obj':obj})
 
 
-def formulario(request):
-    template_user = reverse_lazy('usuario:index')
+def registro(request):
+    template_user = reverse_lazy('usuario:registro') #se define el template user con reverse
 
     if request.user.is_authenticated:
         return HttpResponseRedirect(template_user)
@@ -23,15 +23,15 @@ def formulario(request):
         form = CustomUserCreationForm(request.POST, request.FILES)
         if form.is_valid():
             user = form.save()
-            # Puedes agregar aquí cualquier lógica adicional, como iniciar sesión automáticamente al usuario
+            # Se puede agregar aquí cualquier lógica adicional, como iniciar sesión automáticamente al usuario
             return HttpResponseRedirect(template_user) # Redirige al usuario a la página de inicio de sesión
         else:
             print(form.errors)
-            return render(request, 'login/formulario.html', {'form': form})
+            return render(request, 'login/registro.html', {'form': form}) #se señala asi porque esta en esa carpeta el registro.html
 
     else:
         form = CustomUserCreationForm()
-        return render(request, 'login/formulario.html', {'form': form})
+        return render(request, 'login/registro.html', {'form': form})
 
 
 @login_required()
@@ -39,7 +39,7 @@ def editPerfil(request):
     if request.method == 'GET':
         user = request.user
         form = CustomUserEditForm(instance=user)
-        return render(request, 'formulario.html', {'form':form})
+        return render(request, 'login/registro.html', {'form':form})
     
     if request.method == 'POST':
         user = CustomUser.objects.get(username=request.user)
@@ -49,11 +49,11 @@ def editPerfil(request):
             return render(request,'index.html')
         else:
             print(form.errors)
-            return render(request, 'formulario.html',{'form':form.errors})
+            return render(request, 'login/registro.html',{'form':form.errors})
         
 
 def autenticationView(request):
-    template_name = 'login.html'
+    template_name = 'login/login.html'
     template_user = reverse_lazy('usuario:index')
     
     if request.user.is_authenticated:

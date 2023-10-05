@@ -26,6 +26,22 @@ body {
 	justify-content: center;
 	padding: 20px;
 }
+.container-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 700px;
+    width: 100%;
+    padding: 25px;
+    background: #0939AF;
+    border-radius: 8px;
+}
+
+/* Establece el ancho de los campos de entrada al 100% */
+.input-box input {
+    width: 100%;
+}
 
 .container-form {
     position: absolute;
@@ -35,7 +51,7 @@ body {
     max-width: 700px;
     width: 100%;
     padding: 25px;
-    background: #4B0082; 
+    background: #0939AF;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
@@ -53,7 +69,7 @@ body {
 .form button {
 	height: 55px;
 	width: 100%;
-	background-color: #9D76C1;
+	background-color: #4477CE;
 	transition: all 0.2s ease;
 	color: var(--text-color);
 	font-size: 1rem;
@@ -65,7 +81,7 @@ body {
 }
 
 .form button:hover {
-	background-color:#D988B9;
+	background-color:#8CABFF;
 }
 .input-box label{
 	color: white;

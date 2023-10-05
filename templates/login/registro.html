@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %} Formulario de Inscripción {% endblock %}
+
+{% block content %}
+{% block header %}
+
+{% endblock %}
+<section class="container-form mt-4">
+    <form method="POST" enctype="multipart/form-data" id="form" class="form">
+        {% csrf_token %}
+        <div class="input-box mt-3" placeholder="Escribe tu nombre">
+            <label for="{{ form.first_name.id_for_label }}">Nombre</label>
+            {{ form.first_name }}
+            {{ form.first_name.errors }} 
+        </div>
+        <div class="input-box">
+            <label for="{{ form.last_name.id_for_label }}">Apellido</label>
+            {{ form.last_name }}
+            {{ form.last_name.errors }} 
+        </div>
+        <div class="input-box">
+            <label for="{{ form.username.id_for_label }}">Nombre de Usuario</label>
+            {{ form.username }}
+            {{ form.username.errors }}
+        </div>
+        <!-- Otros campos del formulario -->
+        <div class="input-box">
+            <label for="{{ form.email.id_for_label }}">Email</label>
+            {{ form.email }}
+            {{ form.email.errors }}
+        </div>
+        <div class="input-box">
+            <label for="{{ form.peso.id_for_label }}">Peso (Kg) </label>
+            {{ form.peso }}
+            {{ form.peso.errors }} 
+        </div>
+        <div class="input-box">
+            <label for="{{ form.password1.id_for_label }}">Contraseña</label>
+            {{ form.password1 }}
+            {{ form.password1.errors }}
+        </div>
+        <div class="input-box">
+            <label for="{{ form.password2.id_for_label }}">Confirmar la contraseña</label>
+            {{ form.password2 }}
+            {{ form.password2.errors }} 
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+</section>
+
+{% endblock %}

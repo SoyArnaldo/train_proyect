@@ -1,27 +1,25 @@
 {% extends "base.html" %}
 
-{% block title %} Formulario de Inicio de sesion {% endblock %}
+{% block title %} Formulario de inicio de sesión {% endblock %}
 
 {% block content %}
-{% block header %}
+<section class="container-box">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="input-box mb-3">
+            <label for="{{ form.username.id_for_label }}">Nombre de Usuario</label>
+            {{ form.username }}
+            {{ form.username.errors }}
+        </div>
+        <div class="input-box">
+            <label for="{{ form.password.id_for_label }}">Contraseña</label>
+            {{ form.password }}
+            {{ form.password.errors }}
+        </div>
+        <div class="row mt-3">
+            <button class="btn btn--radius-2 btn--green" type="submit">Iniciar Sesión</button>
+        </div>
+    </form>
+</section>
+{% endblock %}
 
-{% endblock %}
-    <section class="container-form mt-4">
-        <form method="POST" enctype="multipart/form-data" id="form" class="form">
-            {% csrf_token %}
-            <div class="row row-space">
-                <div class="col-md-4 mb-3">
-                    <label for="username" class="form-label">User Name</label>
-                    <input type="text" class="form-control" id="username" name="username"placeholder="Your Username">
-                </div>
-                <div class="mb-3">
-                    <label for="password1]" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Your password">
-                </div>
-            </div>
-            <div class="p-t-15">
-                <button class="btn btn--radius-2 btn--green" type="submit">Login</button>
-            </div>
-        </form>
-    </section>
-{% endblock %}
