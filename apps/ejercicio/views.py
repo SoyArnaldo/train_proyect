@@ -1,8 +1,9 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, redirect
 from django.urls import reverse_lazy
 from .forms import ComentarioForm 
 from django.contrib.auth.decorators import login_required
-from .models import Item, Comentario as ComentarioModel  
+from .models import Item, Comentario  
+from apps.usuario.models import CustomUser
 
 @login_required
 def video(request):
@@ -15,7 +16,8 @@ def video(request):
             comentario_text = comentario_form.cleaned_data['comentario']
 
             # Instancia para guardar los comentarios en la bd
-            comentario = ComentarioModel(comentario=comentario_text)  # Utiliza el modelo con el nuevo nombre
+            comentario = Comentario(comentario=comentario_text, user=request.user)  # Utiliza el modelo con el nuevo nombre
             comentario.save()
+            return redirect("core:home")
 
     return render(request, 'dashboard/index.html', {'obj': obj, 'comentario_form': comentario_form})

@@ -21,7 +21,6 @@ def registro(request):
         else:
             print(form.errors)
             return render(request, 'login/registro.html', {'form': form}) #se señala asi porque esta en esa carpeta el registro.html
-
     else:
         form = CustomUserCreationForm()
         return render(request, 'login/registro.html', {'form': form})

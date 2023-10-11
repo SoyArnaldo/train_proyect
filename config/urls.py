@@ -27,6 +27,4 @@ urlpatterns = [
     path('', include('apps.core.urls')), # Incluimos las urls de la app core
     path('', include('apps.usuario.urls')), #se incluyen las urls de la app usuario
     path('', include('apps.ejercicio.urls')) #se incluyen las urls de la app ejercicios
-] 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

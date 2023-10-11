@@ -24,12 +24,12 @@
 <div class="container mt-5">
     <div class="row">
         {% for i in obj %}
-        <div class="col-md-6">
-            <div class="mb-4">
-                <h2>{{ i.titulo }}</h2>
-                {% video i.video 'small' %}
+            <div class="col-md-6">
+                <div class="mb-4">
+                    <h2>{{ i.titulo }}</h2>
+                    {% video i.video 'small' %}
+                </div>
             </div>
-        </div>
         {% endfor %}
     </div>
     <form method="POST" class="mt-4">
