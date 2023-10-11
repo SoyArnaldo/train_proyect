@@ -2,11 +2,9 @@
 
 # Django
 from django.shortcuts import render, redirect
-from django.views.decorators.csrf import csrf_protect
-
-
+from apps.ejercicio.models import Comentario
 
 def home(request):
-    """Vista de la página de inicio."""
+    comentarios = Comentario.objects.all()  
+    return render(request, "dashboard/dashboard.html", {'comentarios': comentarios})
 
-    return render(request, "dashboard/dashboard.html")

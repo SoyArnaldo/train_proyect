@@ -12,4 +12,5 @@ app_name = 'core'
 urlpatterns = [
 	path(route='', view=home, name='home'),
     path('usuario/', include('apps.usuario.urls')),  # Incluye las URLs de 'apps.usuario'
+    path('ejercicio/', include('apps.ejercicio.urls')),  # Incluye las URLs de 'apps.usuario'
 ]

@@ -27,7 +27,6 @@ ALLOWED_HOSTS = []
 # Application definition
 # ----------------------------------------------------------------------------
 DJANGO_APPS = [
-    'embed_video',
 	'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,7 +37,9 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = []
 LOCAL_APPS = [
 	'apps.core',  # o 'apps.core'
-    'apps.usuario' #app destinada al usuario 
+    'apps.usuario', #app destinada al usuario 
+    'apps.ejercicio', #app destinada a ejercicio y comentarios
+    'embed_video',
 ]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -128,12 +129,15 @@ STATICFILES_DIRS = [str(BASE_DIR / 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
-# # PARA MANEJAR ARCHIVOS MULTIMEDIA 
-# MEDIA_URL = 'media/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+#PARA MANEJAR ARCHIVOS MULTIMEDIA 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 # DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 # ----------------------------------------------------------------------------
+
+AUTH_USER_MODEL = 'usuario.CustomUser'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

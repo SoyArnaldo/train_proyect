@@ -2,6 +2,14 @@
 
 {% block title %} Formulario de inicio de sesión {% endblock %}
 
+{% block header %}
+    <a  class="logo" href="{% url 'core:home' %}">
+        <i class='bx bx-dumbbell'></i>
+        Gym Web
+    </a>
+{% endblock %}
+
+
 {% block content %}
 <section class="container-box">
     <form method="POST">

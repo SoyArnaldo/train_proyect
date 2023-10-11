@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.utils.translation import gettext_lazy as _
-from embed_video.fields import EmbedVideoField
 
 class CustomUser(AbstractUser):
     # Campos heredados de AbstractUser
@@ -12,6 +11,8 @@ class CustomUser(AbstractUser):
 
     # Campos personalizados
     peso = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
+    foto = models.ImageField(upload_to='fotos_perfil/', null=True, blank=True)
+    comentarios = models.TextField(blank=True)
     groups = models.ManyToManyField(Group, verbose_name=_('groups'), blank=True, related_name='customuser_set')
     user_permissions = models.ManyToManyField(
         Permission,
@@ -26,6 +27,3 @@ class CustomUser(AbstractUser):
         verbose_name_plural = "Usuarios"
     def __str__(self):
         return self.username
-
-class Item(models.Model):
-    video = EmbedVideoField()  # same like models.URLField()

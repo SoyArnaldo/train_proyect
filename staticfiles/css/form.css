@@ -17,14 +17,28 @@
 	--p-font: 1.1rem;
 }
 
-
 body {
 	background: var(--bg-color);
-	min-height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	padding: 20px;
+}
+.container-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 700px;
+    width: 100%;
+    padding: 25px;
+    background: #0939AF;
+    border-radius: 8px;
+}
+
+/* Establece el ancho de los campos de entrada al 100% */
+.input-box input {
+    width: 100%;
 }
 
 .container-form {

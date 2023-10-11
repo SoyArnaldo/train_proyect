@@ -1,5 +1,5 @@
 {% load static %}
-    <a  class="logo" href="#inicio">
+    <a  class="logo" href="{% url 'core:home' %}">
         <i class='bx bx-dumbbell'></i>
         Gym Web
     </a>
@@ -13,7 +13,7 @@
 
     <nav class="navbar">
         <a class="" style="--i:0;" href="{% url 'usuario:login' %}">Inicio de Sesión </a>
-        <a class="" style="--i:1;" href="#asesoria">Servicios</a>
+        <a class="" style="--i:1;" href="{% url 'ejercicio:index' %}">Servicios</a>
     </nav>
 
     <script src="{% static 'js/script.js' %}" defer></script>

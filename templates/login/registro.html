@@ -2,10 +2,15 @@
 
 {% block title %} Formulario de Inscripción {% endblock %}
 
-{% block content %}
 {% block header %}
-
+<style>
+    .file-input {
+        background-color: #ffffff;
+    }
+</style>
 {% endblock %}
+
+{% block content %}
 <section class="container-form mt-4">
     <form method="POST" enctype="multipart/form-data" id="form" class="form">
         {% csrf_token %}
@@ -36,6 +41,10 @@
             {{ form.peso.errors }} 
         </div>
         <div class="input-box">
+            <label for="id_foto">Foto de perfil</label>
+            <input class="file-input" type="file" name="{{ form.foto.name }}" accept="image/*">
+        </div>
+        <div class="input-box">
             <label for="{{ form.password1.id_for_label }}">Contraseña</label>
             {{ form.password1 }}
             {{ form.password1.errors }}
@@ -46,7 +55,10 @@
             {{ form.password2.errors }} 
         </div>
         <button type="submit">Enviar</button>
+        <a href="{% url 'usuario:login' %}">Ir a la página de inicio de sesión</a>
     </form>
 </section>
-
 {% endblock %}
+{% block footer %}
+    {% include "dashboard/footer.html" %}
+{% endblock%}
