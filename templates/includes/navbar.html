@@ -13,9 +13,10 @@
 
     <nav class="navbar">
         <a class="" style="--i:0;" href="{% url 'usuario:login' %}">Inicio de Sesión </a>
-        {% if user.isauthenticated %}
-            <a class="" style="--i:1;" href="{% url 'ejercicio:index' %}">Servicios</a>
+        {% if user.is_authenticated %}
+        <a class="" style="--i:1;" href="{% url 'ejercicio:index' %}">Servicios</a>
+        <a class="" style="--i:1;" href="{% url 'usuario:logout' %}">LogOut</a>
         {% endif %}
-    </nav>
+    </nav>    
 
     <script src="{% static 'js/script.js' %}" defer></script>

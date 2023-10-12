@@ -5,7 +5,7 @@ from embed_video.fields import EmbedVideoField
 from apps.usuario.models import CustomUser
 
 class Item(models.Model):
-    titulo= models.CharField(max_length=120, default='Zona del cuerpo a entrenar')
+    titulo= models.CharField(max_length=120, default='Zona')
     video = EmbedVideoField()  # same like models.URLField()
 
     def __str__(self):

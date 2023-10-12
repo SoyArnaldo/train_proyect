@@ -85,9 +85,11 @@
                                 </div>
                             </div>                
                             <div class="card-content">
-                                <h2 class="name">{{user.username}}</h2>
-                                {% for comen in coments %}
-                                    <p class="description">{{comen.comentario}}</p>
+                                <h2 class="name">{{ user.username }}</h2>
+                                {% for comentario in user.comentario_set.all %}
+                                    <p class="description">{{ comentario.comentario }}</p>
+                                {% empty %}
+                                    <p class="description">No hay comentarios para este usuario.</p>
                                 {% endfor %}
                             </div>
                         </div>
