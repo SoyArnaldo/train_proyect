@@ -27,4 +27,6 @@ class CustomUserEditForm(forms.ModelForm):
             'last_name': forms.TextInput(attrs={'placeholder': 'Escribe tu apellido'}),
             'email': forms.EmailInput(attrs={'placeholder': 'Correo electrónico'}),
             'peso': forms.NumberInput(attrs={'placeholder': 'Escribe tu peso en números decimales', 'step': '0.01'}),
+            'password1': forms.PasswordInput(attrs={'placeholder': 'Escribe una contraseña'}),
+            'password2': forms.PasswordInput(attrs={'placeholder': 'Confirma la contraseña'}),            
         }

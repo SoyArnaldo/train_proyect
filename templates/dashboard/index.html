@@ -16,6 +16,7 @@
     </label>
     <nav class="navbar">
         <a class="" style="--i:1;" href="{% url 'ejercicio:index' %}">Servicios</a>
+        <a class="" style="--i:1;" href="{% url 'usuario:editPerfil' %}">Actualizar datos</a>
         <a class="" style="--i:1;" href="{% url 'usuario:logout' %}">LogOut</a>
     </nav>
 {% endblock %}
@@ -23,27 +24,27 @@
 {% block content %}
 <div class="container mt-5">
     <div class="row">
-        {% for i in obj %}
-            <div class="col-md-6">
-                <div class="mb-4">
-                    <h2>{{ i.titulo }}</h2>
-                    {% video i.video 'small' %}
+        <div class="col">
+            {% for i in obj %}
+                <div class="col-md-6">
+                    <div class="mb-4">
+                        <h2>{{ i.titulo }}</h2>
+                        {% video i.video 'small' %}
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
-    </div>
-    <form method="POST" class="mt-4">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="{{ comentario_form.comentario.id_for_label }}">Experiencia del Usuario</label>
-            {{ comentario_form.comentario }}
+            {% endfor %}
         </div>
-        <button type="submit" class="btn btn-primary">Guardar Comentario</button>
-    </form>
-    
+        <div class="container-form">
+            <form method="POST">
+                {% csrf_token %}
+                    <label  class="form-label" for="id_comentario">Experiencia del Usuario</label>
+                    <input type="text" class="form-control" name="comentario" placeholder="Deja un comentario sobre tu experiencia en la página" id="id_comentario">
+                    <div class="d-grid gap-2 col-6 mx-auto mt-2">
+                        <button type="submit" class="btn btn-primary">Guardar Comentario</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock%}
-
-{% block footer %}
-    {% include "dashboard/footer.html" %}
-{% endblock %}

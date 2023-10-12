@@ -96,6 +96,14 @@ header:hover::after {
 	color: var(--main-color);
 }
 
+.navbar {
+	display: flex;
+	width: 500px;
+	height: 50px;
+	align-items: space-evenly;
+	justify-content: space-evenly;
+}
+
 .navbar a {
 	font-size: var(--p-font);
 	color: var(--text-color);

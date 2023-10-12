@@ -1,5 +1,5 @@
 from django.contrib.auth import authenticate, login, logout
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.urls import reverse_lazy
 from .forms import CustomUserCreationForm, CustomUserEditForm
@@ -35,7 +35,7 @@ def editPerfil(request):
         # Creamos una instancia del formulario de edición de usuario y lo poblamos con los datos del usuario
         form = CustomUserEditForm(instance=user)
         # Renderizamos la plantilla 'login/registro.html' y pasamos el formulario como contexto
-        return render(request, 'login/registro.html', {'form': form})
+        return render(request, 'login/update.html', {'form': form})
 
     # Si la solicitud HTTP es un POST (se envió el formulario)
     if request.method == 'POST':
@@ -48,22 +48,20 @@ def editPerfil(request):
             # Guardamos los cambios en el usuario
             form.save()
             # Redirigimos al usuario a la página 'index.html'
-            return render(request, 'index.html')
+            return redirect('ejercicio:index')
         else:
             # Si el formulario no es válido, imprimimos los errores en la consola y mostramos los errores en la plantilla 'login/registro.html'
             print(form.errors)
-            return render(request, 'login/registro.html', {'form': form.errors})
+            return render(request, 'login/update.html', {'form': form.errors})
 
 
 def autenticationView(request):
     # Definimos el nombre de la plantilla para el formulario de inicio de sesión
     template_name = 'login/login.html'
-    # Definimos la URL de redirección después del inicio de sesión exitoso
-    template_user = reverse_lazy('ejercicio:index')
     
     # Verificamos si el usuario ya está autenticado; si es así, lo redirigimos a la página 'index.html'
     if request.user.is_authenticated:
-        return HttpResponseRedirect(template_user)
+        return redirect('ejercicio:index')
 
     # Si la solicitud HTTP es un POST (se envió el formulario de inicio de sesión)
     if request.method == 'POST':
@@ -78,7 +76,7 @@ def autenticationView(request):
             # Iniciamos sesión para el usuario autenticado
             login(request, user)
             # Redirigimos al usuario a la página 'index.html'
-            return HttpResponseRedirect(template_user)
+            return redirect('ejercicio:index')
         else:
             # Si la autenticación falla, creamos una instancia del formulario de autenticación y mostramos los errores
             form = AuthenticationForm(request.POST)
@@ -92,6 +90,5 @@ def autenticationView(request):
 
 def logOutView(request):
     logout(request)
-    
-    return HttpResponseRedirect(reverse_lazy('usuario:login'))
+    return redirect('usuario:login')
 

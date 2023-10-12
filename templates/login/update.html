@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %} Formulario de Inscripción {% endblock %}
+{% block header %}
+<style>
+    .file-input {
+        background-color: #ffffff;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<section class="container-form mt-4">
+    <form method="POST" enctype="multipart/form-data" id="form" class="form">
+        {% csrf_token %}
+		{% for item in form %}
+			<div class="input-box">
+				{{item.label}}
+				{{item}}
+			</div>
+		{% endfor %}
+        <button type="submit">Enviar</button>
+    </form>
+{% endblock %}
